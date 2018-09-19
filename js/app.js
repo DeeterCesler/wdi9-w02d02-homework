@@ -3,93 +3,93 @@ let computerScore = 0;
 
 const playARound = () => {
 
-deck = [
-    {
-      name: "Bulbasaur",
-      damage: 60
-    }, {
-      name: "Caterpie",
-      damage: 40
-    }, {
-      name: "Charmander",
-      damage: 60
-    }, {
-      name: "Clefairy",
-      damage: 50
-    }, {
-      name: "Jigglypuff",
-      damage: 60
-    }, {
-      name: "Mankey",
-      damage: 30
-    }, {
-      name: "Meowth",
-      damage: 60
-    }, {
-      name: "Nidoran - female",
-      damage: 60
-    }, {
-      name: "Nidoran - male",
-      damage: 50
-    }, {
-      name: "Oddish",
-      damage: 40
-    }, {
-      name: "Pidgey",
-      damage: 50
-    }, {
-      name: "Pikachu",
-      damage: 50
-    }, {
-      name: "Poliwag",
-      damage: 50
-    }, {
-      name: "Psyduck",
-      damage: 60
-    }, {
-      name: "Rattata",
-      damage: 30
-    }, {
-      name: "Squirtle",
-      damage: 60
-    }, {
-      name: "Vulpix",
-      damage: 50
-    }, {
-      name: "Weedle", 
-      damage: 40
-    }
-  ];
+  deck = [
+      {
+        name: "Bulbasaur",
+        damage: 60
+      }, {
+        name: "Caterpie",
+        damage: 40
+      }, {
+        name: "Charmander",
+        damage: 60
+      }, {
+        name: "Clefairy",
+        damage: 50
+      }, {
+        name: "Jigglypuff",
+        damage: 60
+      }, {
+        name: "Mankey",
+        damage: 30
+      }, {
+        name: "Meowth",
+        damage: 60
+      }, {
+        name: "Nidoran - female",
+        damage: 60
+      }, {
+        name: "Nidoran - male",
+        damage: 50
+      }, {
+        name: "Oddish",
+        damage: 40
+      }, {
+        name: "Pidgey",
+        damage: 50
+      }, {
+        name: "Pikachu",
+        damage: 50
+      }, {
+        name: "Poliwag",
+        damage: 50
+      }, {
+        name: "Psyduck",
+        damage: 60
+      }, {
+        name: "Rattata",
+        damage: 30
+      }, {
+        name: "Squirtle",
+        damage: 60
+      }, {
+        name: "Vulpix",
+        damage: 50
+      }, {
+        name: "Weedle", 
+        damage: 40
+      }
+    ];
 
-const player = {
-    hand: []
-}
-
-const computer = {
-    hand: []
-}
-
-
-// the function to deal out from the deck
-const dealOut = () => {
-  player.hand = [];
-  computer.hand = [];
-  const deckDeal = deck;
-
-  for(let i =0; i<3; i++){
-      const randomCard = Math.floor(Math.random()*deckDeal.length);
-      player.hand.push(deckDeal[randomCard]);
-      deckDeal.splice([randomCard],1);
-  };
-
-  for(let i =0; i<3; i++){
-      const randomCard = Math.floor(Math.random()*deckDeal.length);
-      computer.hand.push(deckDeal[randomCard]);
-      deckDeal.splice([randomCard],1);
+  const player = {
+      hand: []
   }
-}
 
-// a round
+  const computer = {
+      hand: []
+  }
+
+
+  // the function to deal out from the deck
+  const dealOut = () => {
+    player.hand = [];
+    computer.hand = [];
+    const deckDeal = deck;
+
+    for(let i =0; i<3; i++){
+        const randomCard = Math.floor(Math.random()*deckDeal.length);
+        player.hand.push(deckDeal[randomCard]);
+        deckDeal.splice([randomCard],1);
+    };
+
+    for(let i =0; i<3; i++){
+        const randomCard = Math.floor(Math.random()*deckDeal.length);
+        computer.hand.push(deckDeal[randomCard]);
+        deckDeal.splice([randomCard],1);
+    }
+  }
+
+  // a round
 
   dealOut();
   // console.logged dealOut() here, and the deck is being dealt correctly
@@ -107,18 +107,29 @@ const dealOut = () => {
         const computerCard = computerHandCopy[computerCardIndex];
         // computerHandCopy.splice(computerCardIndex,1);
 
+        // console.log(`PLAYER IS HOLING ${playerHandCopy} AGAINST COMPUTER'S ${computerHandCopy}.`)
+
+        console.log(`PLAYER IS PLAYING ${playerCard.name} AGAINST COMPUTER'S ${computerCard.name}.`)
         // console.log("FOR LOOP RUNNING");
         // console.log(playerCard.damage);
         // console.log(computerCard.damage);
+        if(playerCard.damage === computerCard.damage){
+          console.log(`THEY WERE EQUALLY MATCHED!`)
+      }
 
         if(playerCard.damage > computerCard.damage){
             playerScore++;
+            console.log(`PLAYER'S ${playerCard.name} WAS STRONGER!`)
         }
         if(playerCard.damage < computerCard.damage){
             computerScore++;
+            console.log(`COMPUTER'S ${computerCard.name} WAS STRONGER!`)
         }
         console.log(`COMPUTER SCORE IS ${computerScore} AND PLAYER SCORE IS ${playerScore}.`);
         // console.log(playerHandCopy);
+        console.log("");
+        console.log("RESHUFFLING...");
+        console.log("");
     }
 }
 
